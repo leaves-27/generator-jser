@@ -1,0 +1,12 @@
+{
+  "name": "my-web",
+  "version": "0.0.1",
+  "description": "my-web",
+  "dependencies": {
+    "del": "^1.2.0",
+    "gulp": "^3.8.7",
+    "gulp-connect": "^2.2.0"
+  },
+  "author": "leaves",
+  "license": "ISC"
+}
