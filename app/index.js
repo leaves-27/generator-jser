@@ -30,7 +30,7 @@ module.exports = generators.Base.extend({
           message: 'description:', default: this.description
         },
         {
-          type: 'list',   // 提供选择的列表
+          type: 'list',
           name: 'kissy',
           message: 'which version of kissy',
           choices: [{
