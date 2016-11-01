@@ -1,8 +1,7 @@
 {
   "name": "generator-customer",
-  "version": "0.0.1",
-  "description": "\"my gennerator\"",
-  "main": "index.js",
+  "version": "0.1.0",
+  "description": "my gennerator",
   "keywords": [
     "yeoman-generator"
   ],
@@ -11,9 +10,11 @@
     "chalk": "^1.0.0",
     "yosay": "^1.0.2"
   },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/leaves-27/generator-customer.git"
   },
+  "homepage": "https://github.com/leaves-27",
   "author": "leaves",
   "license": "ISC"
 }

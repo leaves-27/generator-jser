@@ -1,0 +1,17 @@
+{
+  "name": "kitas",
+  "description": "kitas新版首页",
+  "main": "",
+  "license": "ISC",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "author": "dong.keke",
+  "dependencies": {
+    "jquery": "^3.1.1"
+  }
+}

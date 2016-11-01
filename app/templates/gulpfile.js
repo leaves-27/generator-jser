@@ -3,6 +3,12 @@ var fs           = require('fs');
 var del          = require('del');
 var connect      = require('gulp-connect');
 
+var stylus = require('gulp-stylus');
+var nib = require('nib');
+var uglify = require('gulp-uglify');
+
+var bower = require('gulp-bower');
+
 var jsonObj = JSON.parse(fs.readFileSync('./package.json'));
 
 //基础变量
@@ -26,9 +32,29 @@ gulp.task('clean',function(cb) {
   del(['build'], cb);
 });
 
-gulp.task('copy',function(){
-  return gulp.src('./src/**/*.*')
-    .pipe(gulp.dest(paths.build));
+gulp.task('copy',['stylCompile','uglifyJs'],function(){
+  return gulp.src(paths.src + '/**/*.html')
+    .pipe(gulp.dest(paths.build+'/'));
+});
+
+gulp.task('stylCompile', function(){
+  return gulp.src(paths.src + '/**/*.styl')
+    .pipe(stylus({
+      use : nib(),
+      compress : true
+    }))
+    .pipe(gulp.dest(paths.build +'/'))
+});
+
+gulp.task('bower', function() {
+  return bower()
+    .pipe(gulp.dest(paths.build +'/common/lib'))
+});
+
+gulp.task("uglifyJs",function(){
+  return gulp.src(paths.src + "/**/*.js")
+    .pipe(uglify())
+    .pipe(gulp.dest(paths.build +'/'))
 });
 
 gulp.task('default', ['clean','connect']);
