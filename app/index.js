@@ -89,14 +89,6 @@ module.exports = generators.Base.extend({
       this.author = props.author;
       this.description = props.description;
 
-      // var packagePath = path.join(__dirname,'templates/package.json');
-      // var info = JSON.parse(fs.readFileSync(packagePath));
-
-      // info.name = this.name;
-      // info.description = this.description;
-      // info.author = this.author;
-
-      // fs.writeFileSync(packagePath,JSON.stringify(info,null,2));
       Util.resetConfig('templates/package.json',this);
       Util.resetConfig('templates/bower.json',this);
 
@@ -111,20 +103,20 @@ module.exports = generators.Base.extend({
   },
   install:function (){
     var done = this.async();
+    var _self = this;
     this.spawnCommand('npm',['install']).on('exit',function(code) {
       if(code){
         done(new Error('code:'+code));
         // console.log(code)
       }else{
-        done();
-      }
-    }).on('error', done);
-
-    this.spawnCommand('bower',['install']).on('exit',function(code) {
-      if(code){
-        done(new Error('code:'+code));
-        // console.log(code)
-      }else{
+        _self.spawnCommand('bower',['install']).on('exit',function(code) {
+          if(code){
+            done(new Error('code:'+code));
+            // console.log(code)
+          }else{
+            done();
+          }
+        }).on('error', done);
         done();
       }
     }).on('error', done);

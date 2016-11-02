@@ -1,8 +1,8 @@
 {
   "name": "kitas",
   "version": "",
-  "description": "kitas新版首页",
-  "author": "dong.keke",
+  "description": "",
+  "author": "",
   "license": "ISC",
   "devDependencies": {
     "del": "^2.2.2",

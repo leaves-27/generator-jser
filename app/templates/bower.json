@@ -1,6 +1,6 @@
 {
   "name": "kitas",
-  "description": "kitas新版首页",
+  "description": "",
   "main": "",
   "license": "ISC",
   "ignore": [
@@ -10,7 +10,7 @@
     "test",
     "tests"
   ],
-  "author": "dong.keke",
+  "author": "",
   "dependencies": {
     "jquery": "^3.1.1"
   }

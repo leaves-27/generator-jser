@@ -32,7 +32,7 @@ gulp.task('clean',function(cb) {
   del(['build'], cb);
 });
 
-gulp.task('copy',['stylCompile','uglifyJs'],function(){
+gulp.task('copy',['stylCompile','bower','uglifyJs'],function(){
   return gulp.src(paths.src + '/**/*.html')
     .pipe(gulp.dest(paths.build+'/'));
 });
