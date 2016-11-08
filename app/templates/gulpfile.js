@@ -56,5 +56,7 @@ gulp.task("uglifyJs",function(){
     .pipe(uglify())
     .pipe(gulp.dest(paths.build +'/'))
 });
-
+gulp.task('watch', function(){
+  gulp.watch(paths.src +'/**/*.*', ['copy']);
+});
 gulp.task('default', ['clean','connect']);
