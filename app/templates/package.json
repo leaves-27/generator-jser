@@ -1,8 +1,8 @@
 {
-  "name": "kitas",
-  "version": "",
-  "description": "",
-  "author": "",
+  "name": "<%= name%>",
+  "version": "<%= version%>",
+  "description": "<%= description%>",
+  "author": "<%= author%>",
   "license": "ISC",
   "devDependencies": {
     "del": "^2.2.2",

@@ -6,11 +6,11 @@ var fs = require('fs');
 
 var Util = {
   templates : [
-    "bower.json",
+    "README.md",
     "package.json",
-    "gulpfile.js",
+    "webpack.config.js",
     ".gitignore",
-    "src/index.html",
+    "src/views/index.html",
     "src/common/base.styl",
     "src/common/base.js",
     "src/page/index/index.js",
@@ -89,8 +89,8 @@ module.exports = generators.Base.extend({
       this.author = props.author;
       this.description = props.description;
 
-      // Util.resetConfig('templates/package.json',this);
-      // Util.resetConfig('templates/bower.json',this);
+      Util.resetConfig('templates/package.json',this);
+      Util.resetConfig('templates/bower.json',this);
 
       done();  //进入下一个生命周期阶段
     }.bind(this));
