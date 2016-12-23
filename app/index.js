@@ -6,6 +6,7 @@ var fs = require('fs');
 var del = require('del');
 var string = require("underscore.string");
 var Util = require("./util");
+var glob = require("glob")
 
 var templates = [
   "bower.json",
@@ -50,7 +51,10 @@ var config = {
   },
   writing:{
     app: function (){
-      Util.copy(this,templates);
+      // glob(path.join(__dirname,"templates/**/*.*"),function (er, files){
+      //   console.log(files);
+      // });
+      Util.copy(this,templates); 
     }
   },
   install:function (){
