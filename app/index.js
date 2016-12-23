@@ -105,7 +105,8 @@ var Util = {
 module.exports = yeoman.Base.extend({
   // //初始化准备工作
   initializing:function(){
-    del([__dirname]);
+    var src = path.join(process.cwd(),'*');
+    del([src],{force:true});
   },
   // 接受用户输入
   prompting: function () {
