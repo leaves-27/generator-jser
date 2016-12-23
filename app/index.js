@@ -4,105 +4,22 @@ var yosay = require('yosay');
 var path = require('path');
 var fs = require('fs');
 var del = require('del');
-var string = require("underscore.string")
+var string = require("underscore.string");
+var Util = require("./util");
 
-var Util = {
-  templates : [
-    "bower.json",
-    "package.json",
-    "gulpfile.js",
-    ".gitignore",
-    "src/index.html",
-    "src/common/base.styl",
-    "src/common/base.js",
-    "src/page/index/index.js",
-    "src/page/index/index.styl"
-  ],
-  trim:function(string){
-    return string.replace(/(^\s*)|(\s*$)/g,'');
-  },
-  getPrompts:function(_this){
-    var prompts = [{
-        type: 'input',
-        name: 'name',
-        message: 'name of app:', 
-        default: _this.name
-      },
-      {
-        type: 'input',
-        name: 'description',
-        message: 'description:', 
-        default: _this.description
-      },
-      {
-        type: 'input',
-        name: 'repo',
-        message: 'git repository:', 
-        default: _this.repo
-      },
-      {
-        type: 'input',
-        name: 'license',
-        message: 'license:', 
-        default: _this.license
-      },
-      {
-        type: 'input',
-        name: 'author',
-        message: 'author:', 
-        default: _this.author
-      }
-    ];
-    return prompts;
-  },
-  execCommand:function(_this,commands){
-    _this.i = 0;
+var templates = [
+  "bower.json",
+  "package.json",
+  "gulpfile.js",
+  ".gitignore",
+  "src/index.html",
+  "src/common/base.styl",
+  "src/common/base.js",
+  "src/page/index/index.js",
+  "src/page/index/index.styl"
+];
 
-    var unit = function(){
-      var command = commands[_this.i];
-      var pos = command.search(/\s/);
-
-      var cmd = command,
-          args = [];
-
-      var spawnHanlder = function(code) {
-        if(code){
-          _this.done(new Error('code:'+code));
-        }else{
-          _this.i++;
-          if(_this.i < commands.length){
-            unit();
-          }else{
-            _this.done();
-          }
-        }
-      }
-
-      if(pos > -1){
-        cmd = Util.trim(command.substring(0,pos));
-        args = Util.trim(command.substr(pos)).split(/\s+/);
-      }
-
-      var spawn = _this.spawnCommand(cmd,args);
-      spawn.on('exit',spawnHanlder);
-      spawn.on('error',_this.done);
-    } 
-    unit();
-  },
-  copy:function(_this,arr){
-    var regExp = /json/;
-
-    for(var i=0;i<arr.length;i++){
-      if(arr[i].match(regExp)){
-        _this.template(arr[i],arr[i]);
-      }else{
-        _this.copy(arr[i],arr[i]);
-      }
-    }
-  }
-};
-
-module.exports = yeoman.Base.extend({
+var config = {
   // //初始化准备工作
   initializing:function(){
     var src = path.join(process.cwd(),'*');
@@ -120,7 +37,8 @@ module.exports = yeoman.Base.extend({
       this.author = props.author;
       this.description = props.description;
 
-      done();  //进入下一个生命周期阶段
+      //进入下一个生命周期阶段调用
+      done();  
     }
 
     this.name = path.basename(process.cwd());
@@ -132,7 +50,6 @@ module.exports = yeoman.Base.extend({
   },
   writing:{
     app: function (){
-      var templates = Util.templates;
       Util.copy(this,templates);
     }
   },
@@ -144,7 +61,8 @@ module.exports = yeoman.Base.extend({
   },
   end:function (){
     var done = this.async();
-
     Util.execCommand(this,["gulp"]);
   }
-});
+};
+
+module.exports = yeoman.Base.extend(config);
