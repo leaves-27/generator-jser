@@ -1,8 +1,12 @@
 {
-  "name": "kitas",
-  "version": "",
-  "description": "",
-  "author": "",
+  "name": "<%= pkgName %>",
+  "version": "1.0.0",
+  "description": "<%= description %>",
+  "author": "<%= author %>",
+  "repository": {
+    "type": "git",
+    "url": "<%= repo %>"
+  },
   "license": "ISC",
   "devDependencies": {
     "del": "^2.2.2",

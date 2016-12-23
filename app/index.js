@@ -1,5 +1,5 @@
-var generators = require('yeoman-generator');
-var chalk = require('chalk');
+var yeoman = require('yeoman-generator');
+var chalk = require('chalk');//不同的颜色信息
 var yosay = require('yosay');
 var path = require('path');
 var fs = require('fs');
@@ -67,7 +67,7 @@ var Util = {
   }
 };
 
-module.exports = generators.Base.extend({
+module.exports = yeoman.Base.extend({
   initializing: function () {    //初始化准备工作
 
   },
