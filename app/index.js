@@ -3,6 +3,8 @@ var chalk = require('chalk');//不同的颜色信息
 var yosay = require('yosay');
 var path = require('path');
 var fs = require('fs');
+var del = require('del');
+var string = require("underscore.string")
 
 var Util = {
   templates : [
@@ -16,6 +18,9 @@ var Util = {
     "src/page/index/index.js",
     "src/page/index/index.styl"
   ],
+  trim:function(string){
+    return string.replace(/(^\s*)|(\s*$)/g,'');
+  },
   getPrompts:function(_this){
     var prompts = [{
         type: 'input',
@@ -50,37 +55,62 @@ var Util = {
     ];
     return prompts;
   },
-  copy:function(_this,arr){
-    for(var i=0;i<arr.length;i++){
-      _this.copy(arr[i],arr[i]);
-    }
+  execCommand:function(_this,commands){
+    _this.i = 0;
+
+    var unit = function(){
+      var command = commands[_this.i];
+      var pos = command.search(/\s/);
+
+      var cmd = command,
+          args = [];
+
+      var spawnHanlder = function(code) {
+        if(code){
+          _this.done(new Error('code:'+code));
+        }else{
+          _this.i++;
+          if(_this.i < commands.length){
+            unit();
+          }else{
+            _this.done();
+          }
+        }
+      }
+
+      if(pos > -1){
+        cmd = Util.trim(command.substring(0,pos));
+        args = Util.trim(command.substr(pos)).split(/\s+/);
+      }
+
+      var spawn = _this.spawnCommand(cmd,args);
+      spawn.on('exit',spawnHanlder);
+      spawn.on('error',_this.done);
+    } 
+    unit();
   },
-  resetConfig:function(filePath,_this){
-    var packagePath = path.join(__dirname,filePath);
-    var info = JSON.parse(fs.readFileSync(packagePath));
+  copy:function(_this,arr){
+    var regExp = /json/;
 
-    info.name = _this.name;
-    info.description = _this.description;
-    info.author = _this.author;
-
-    fs.writeFileSync(packagePath,JSON.stringify(info,null,2));
+    for(var i=0;i<arr.length;i++){
+      if(arr[i].match(regExp)){
+        _this.template(arr[i],arr[i]);
+      }else{
+        _this.copy(arr[i],arr[i]);
+      }
+    }
   }
 };
 
 module.exports = yeoman.Base.extend({
-  initializing: function () {    //初始化准备工作
-
+  // //初始化准备工作
+  initializing:function(){
+    del([__dirname]);
   },
-  prompting: function () {// 接受用户输入
-    var done = this.async(); 
-    this.name = path.basename(process.cwd());
-    this.license = 'ISC';
-    this.description = '';
-    this.author = '';
-
-    var prompts = Util.getPrompts(this);
-
-    this.prompt(prompts, function (props) {
+  // 接受用户输入
+  prompting: function () {
+    var done = this.async();
+    var promptHanlder = function(props){
       this.name = props.name;
       this.pkgName = props.name;
       
@@ -89,11 +119,15 @@ module.exports = yeoman.Base.extend({
       this.author = props.author;
       this.description = props.description;
 
-      Util.resetConfig('templates/package.json',this);
-      Util.resetConfig('templates/bower.json',this);
-
       done();  //进入下一个生命周期阶段
-    }.bind(this));
+    }
+
+    this.name = path.basename(process.cwd());
+    this.license = '';
+    this.description = '';
+    this.author = '';
+
+    this.prompt(Util.getPrompts(this),promptHanlder.bind(this));
   },
   writing:{
     app: function (){
@@ -102,33 +136,14 @@ module.exports = yeoman.Base.extend({
     }
   },
   install:function (){
-    var done = this.async();
+    this.done = this.async();
     var _self = this;
-    this.spawnCommand('npm',['install']).on('exit',function(code) {
-      if(code){
-        done(new Error('code:'+code));
-        // console.log(code)
-      }else{
-        _self.spawnCommand('bower',['install']).on('exit',function(code) {
-          if(code){
-            done(new Error('code:'+code));
-            // console.log(code)
-          }else{
-            done();
-          }
-        }).on('error', done);
-        done();
-      }
-    }).on('error', done);
+
+    Util.execCommand(this,["npm install","bower install"]);
   },
   end:function (){
     var done = this.async();
-    this.spawnCommand('gulp').on('exit',function(code) {
-      if(code){
-        done(new Error('code:'+code));
-      }else{
-        done();
-      }
-    }).on('error', done);
+
+    Util.execCommand(this,["gulp"]);
   }
 });
