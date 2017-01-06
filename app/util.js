@@ -16,40 +16,6 @@ var Util = {
     }
     return tmp;
   },
-  getPrompts:function(_this){
-    var prompts = [{
-        type: 'input',
-        name: 'name',
-        message: 'name of app:', 
-        default: _this.name
-      },
-      {
-        type: 'input',
-        name: 'description',
-        message: 'description:', 
-        default: _this.description
-      },
-      {
-        type: 'input',
-        name: 'repo',
-        message: 'git repository:', 
-        default: _this.repo
-      },
-      {
-        type: 'input',
-        name: 'license',
-        message: 'license:', 
-        default: _this.license
-      },
-      {
-        type: 'input',
-        name: 'author',
-        message: 'author:', 
-        default: _this.author
-      }
-    ];
-    return prompts;
-  },
   execCommand:function(_this,commands){
     _this.i = 0;
 
