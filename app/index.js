@@ -5,7 +5,7 @@ var path = require('path');
 var fs = require('fs');
 var del = require('del');
 var string = require("underscore.string");
-var Util = require("./util");
+var Util = require("../common");
 
 var getPrompts = function(){
   var prompts = [{
@@ -68,7 +68,7 @@ var Config = {
     this.license = '';
     this.description = '';
     this.author = '';
-    
+
     this.prompt(getPrompts.bind(this)(),promptHanlder.bind(this));
   },
   writing:{
