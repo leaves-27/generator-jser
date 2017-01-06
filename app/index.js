@@ -6,19 +6,6 @@ var fs = require('fs');
 var del = require('del');
 var string = require("underscore.string");
 var Util = require("./util");
-var glob = require("glob")
-
-var templates = [
-  "bower.json",
-  "package.json",
-  "gulpfile.js",
-  ".gitignore",
-  "src/index.html",
-  "src/common/base.styl",
-  "src/common/base.js",
-  "src/page/index/index.js",
-  "src/page/index/index.styl"
-];
 
 var config = {
   // //初始化准备工作
@@ -51,10 +38,7 @@ var config = {
   },
   writing:{
     app: function (){
-      // glob(path.join(__dirname,"templates/**/*.*"),function (er, files){
-      //   console.log(files);
-      // });
-      Util.copy(this,templates); 
+      Util.copy(this,Util.getTemplate());
     }
   },
   install:function (){

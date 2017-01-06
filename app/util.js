@@ -1,6 +1,20 @@
+var files = require("dir-to-files");
+
 var Util = {
   trim:function(string){
     return string.replace(/(^\s*)|(\s*$)/g,'');
+  },
+  getTemplate:function(){
+    var currutDir = __dirname+"/templates";
+    var filePaths = files.geFileList(currutDir);
+    
+    var tmp = [];
+
+    for(var i in filePaths){
+      var regExp = new RegExp(currutDir+"/(.+)");
+      tmp.push(regExp.exec(filePaths[i].path)[1]);
+    }
+    return tmp;
   },
   getPrompts:function(_this){
     var prompts = [{
@@ -82,4 +96,5 @@ var Util = {
     }
   }
 };
+
 module.exports = Util;
