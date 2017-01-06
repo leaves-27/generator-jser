@@ -4,8 +4,7 @@ var Util = {
   trim:function(string){
     return string.replace(/(^\s*)|(\s*$)/g,'');
   },
-  getTemplate:function(){
-    var currutDir = __dirname+"/templates";
+  getTemplate:function(currutDir){
     var filePaths = files.geFileList(currutDir);
     
     var tmp = [];

@@ -73,7 +73,7 @@ var Config = {
   },
   writing:{
     app: function (){
-      Util.copy(this,Util.getTemplate());
+      Util.copy(this,Util.getTemplate(__dirname+"/templates"));
     }
   },
   install:function (){
