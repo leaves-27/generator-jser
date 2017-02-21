@@ -1,0 +1,29 @@
+{
+  "office":[{
+    "id":0,
+    "name":"杭州",
+    "map":"//res.tongbanjie.com/webs/about/imgs/map.png"
+  },{
+    "id":1,
+    "name":"北京",
+    "map":"//res.tongbanjie.com/webs/about/imgs/map2.png"
+  },{
+    "id":2,
+    "name":"上海",
+    "map":"//res.tongbanjie.com/webs/about/imgs/map3.png"
+  }],
+  "channe":[{
+    "name":"商务合作",
+    "email":"bd@tongbanjie.com"
+  }],
+  "contact":[{
+    "name":"微信公众号",
+    "value":"itongbanjie"
+  },{
+    "name":"用户建议邮件",
+    "value":"support@tongbanjie.com"
+  },{
+    "name":"客  服  热  线",
+    "value":"400-869-8686（8:00-22:00）"
+  }]
+}

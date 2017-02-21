@@ -13,10 +13,8 @@
     "gulp": "^3.8.7",
     "gulp-bower": "0.0.13",
     "gulp-connect": "^2.2.0",
-    "gulp-rename": "^1.2.2",
     "gulp-stylus": "^2.5.0",
     "gulp-uglify": "^2.0.0",
-    "gulp-velocityjs": "^1.0.7",
     "nib": "^1.1.2"
   }
 }

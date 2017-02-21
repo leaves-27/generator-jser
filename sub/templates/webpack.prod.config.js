@@ -11,9 +11,6 @@ var bower = require('gulp-bower');
 
 var jsonObj = JSON.parse(fs.readFileSync('./package.json'));
 
-var rename = require('gulp-rename');
-var vm = require('gulp-velocityjs');
-
 //基础变量
 var paths = {
   name : jsonObj.name,
@@ -35,28 +32,10 @@ gulp.task('clean',function(cb) {
   del(['build'], cb);
 });
 
-// gulp.task('copy',['stylCompile','bower','uglifyJs'],function(){
-//   return gulp.src(paths.src + '/**/*.html')
-//     .pipe(gulp.dest(paths.build+'/'));
-// });
-
-var config = {
-    'root': './src/views',
-    'encoding': 'utf-8',
-    //global macro defined file
-    'macro': 'src/macro/macro.vm',
-    'globalMacroPath': 'src/macro/',
-    // test data root path
-    'dataPath': './mock'
-};
-
 gulp.task('copy',['stylCompile','bower','uglifyJs'],function(){
-  return gulp.src(paths.src + '/views/*.vm')
-    .pipe(vm(config))
-    .pipe(rename({extname:'.html'}))
-    .pipe(gulp.dest(paths.build +'/'));
+  return gulp.src(paths.src + '/**/*.html')
+    .pipe(gulp.dest(paths.build+'/'));
 });
-
 
 gulp.task('stylCompile', function(){
   return gulp.src(paths.src + '/**/*.styl')
@@ -77,9 +56,7 @@ gulp.task("uglifyJs",function(){
     .pipe(uglify())
     .pipe(gulp.dest(paths.build +'/'))
 });
-
 gulp.task('watch', function(){
-  gulp.watch(paths.src +'/**/*.*', ['copy','stylCompile','uglifyJs']);
+  gulp.watch(paths.src +'/**/*.*', ['copy']);
 });
-
 gulp.task('default', ['clean','connect']);

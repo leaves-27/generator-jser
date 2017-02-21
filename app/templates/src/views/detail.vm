@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    #set($currentPage="detail")
+    #include("commponent/static.vm")
+    <title>明细</title>
+  </head>
+  <body>
+    #parse("commponent/header.vm")
+    <div class="container main">
+      #parse("commponent/conditions.vm")
+      <style>
+        .iconfont{color:#aaa;}
+        .right-label{margin-left:10px;}
+      </style>
+      <table class="table table-bordered">
+        <tbody>
+          <tr>
+            <td class="row">
+              <h4 class="col-sm-12">
+                当前群组数据明细：
+                <span class="pull-right">
+                  <label class="iconfont right-label">
+                    下载数据
+                    <a class="glyphicon glyphicon-download-alt iconfont" href="#"></a>
+                  </label>
+                  <label class="iconfont right-label">
+                    设置指标
+                    <a class="glyphicon glyphicon-cog iconfont" href="#"></a>
+                  </label>
+                </span>
+              </h4>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <td>用户ID</td>
+                    <td>会员等级</td>
+                    <td>会员城市</td>
+                    <td>会员性别</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>111</td>
+                    <td>22</td>
+                    <td>33</td>
+                    <td>44</td>
+                  </tr>
+                  <tr>
+                    <td>111</td>
+                    <td>22</td>
+                    <td>33</td>
+                    <td>44</td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

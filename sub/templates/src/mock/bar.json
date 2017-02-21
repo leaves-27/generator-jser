@@ -1,0 +1,13 @@
+[{
+  "url":"//kbs.tongbanjie.com/gw/gwPage",
+  "name":"媒体报道",
+  "id":"media"
+},{
+  "url":"//kbs.tongbanjie.com/gw/notice",
+  "name":"铜板街公告",
+  "id":"notice"
+},{
+  "url":"https://www.tongbanjie.com/v2/about/connectUs.html",
+  "name":"联系我们",
+  "id":"contact"
+}]

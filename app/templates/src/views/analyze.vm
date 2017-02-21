@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    #set($currentPage="analyze")
+    #include("commponent/static.vm")
+    <title>指标编辑</title>
+  </head>
+  <body>
+    #parse("commponent/header.vm")
+    <div class="container main">
+      #parse("commponent/conditions.vm")
+    </div>
+  </body>
+</html>

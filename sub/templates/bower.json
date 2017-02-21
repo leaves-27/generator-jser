@@ -1,0 +1,17 @@
+{
+  "name": "modal",
+  "description": "",
+  "main": "",
+  "license": "ISC",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "author": "",
+  "dependencies": {
+    "jquery": "^3.1.1"
+  }
+}

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>about</title>
+  <link rel="stylesheet" href="/static/bundle.css" />
+  <style>
+    .container{padding-top:100px;}
+  </style>
+</head>
+<body>
+<div id="root" class="root">
+  <div>
+    <%- __html__ %>
+  </div>
+</div>
+<script>
+  window.__INITIAL_STATE__ = <%- __state__ %>;
+</script>
+<script type="text/javascript" src="/static/bundle.js"></script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<style>
+  .cond tbody tr td{
+    padding-left: 0;
+    padding-right: 0;
+  }
+</style>
+<table class="table table-bordered">
+  <tr class="row">
+    <td class="col-sm-8">
+      <h4 class="col-sm-12">已选择条件：</h4>
+      <table class="table cond">
+        <tr class="row">
+          <td>
+            <span class="col-sm-6 text-left checkbox">
+              <label>
+                <input type="checkbox" />会员等级：v1、v2、v3
+              </label>
+            </span>
+            <span class="col-sm-6 text-right">321000</span>
+          </td>
+        </tr>
+        <tr class="row">
+          <td>
+            <span class="col-sm-6 text-left checkbox">
+              <label>
+                <input type="checkbox" />会员等级：v1、v2、v3
+              </label>
+            </span>
+            <span class="col-sm-6 text-right">321000</span>
+          </td>
+        </tr>
+      </table>
+    </td>
+    <td class="col-sm-4">
+      <div class="col-sm-12">
+        <div class="page-header" style="margin-top:0px;padding-bottom:0;">
+          <h4>满足条件用户数：</h4>
+        </div>
+
+        <div>
+          <h1 class="text-center">7832</h1>
+          <ul class="nav nav-pills">
+            <li role="presentation" #if($currentPage=="filter") class="active" #end><a href="../filter.html">筛选</a></li>
+            <li role="presentation" #if($currentPage=="analyze") class="active" #end><a href="../analyze.html">特征分析</a></li>
+            <li role="presentation" #if($currentPage=="detail") class="active" #end><a href="../detail.html">用户明细</a></li>
+            <li role="presentation" #if($currentPage=="save") class="active" #end><a href="#">保存群组</a></li>
+          </ul>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
