@@ -7,12 +7,8 @@
 **/
 
 var yeoman = require('yeoman-generator');
-var chalk = require('chalk');
-var yosay = require('yosay');
 var path = require('path');
-var fs = require('fs');
 var del = require('del');
-var string = require("underscore.string");
 var Util = require("../common");
 
 var getPrompts = function(){
