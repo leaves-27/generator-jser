@@ -1,3 +1,0 @@
-#macro(getGlobalVariable $name)
-  #set($currentPage=$name)
-#end

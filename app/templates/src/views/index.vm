@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
-    #set($currentPage="analyze")
+    #set($currentPage='index')
     #include("commponent/static.vm")
-    <title>指标编辑</title>
+    <title>首页</title>
   </head>
   <body>
     #parse("commponent/header.vm")
     <div class="container main">
-      #parse("commponent/conditions.vm")
+      我是首页
     </div>
   </body>
 </html>
