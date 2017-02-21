@@ -7,7 +7,15 @@
 # install and use
 
     npm install generator-customer -g  
-    mkdir *test*  
-    cd *test*  
-    yo [*app*|*:react*]  
+    mkdir test 
+    cd test
+    yo customer
+
+  or:
+  
+    npm install generator-customer -g  
+    mkdir test 
+    cd test
+    yo customer:react
+
 
