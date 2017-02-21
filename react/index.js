@@ -84,7 +84,7 @@ var Config = {
   },
   end:function (){
     var done = this.async();
-    Util.execCommand(this,["gulp"]);
+    Util.execCommand(this,["npm run build","npm start"]);
   }
 };
 
