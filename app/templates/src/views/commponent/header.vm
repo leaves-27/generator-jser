@@ -7,7 +7,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand hidden-sm #if($currentPage=='index') active #end"  href="../index.html>首页</a>
+      <a class="navbar-brand hidden-sm #if($currentPage=='index') active #end"  href="../index.html">首页</a>
     </div>
     <div class="navbar-collapse collapse" role="navigation">
       <ul class="nav navbar-nav">
