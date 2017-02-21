@@ -1,5 +1,12 @@
+/*
+** use : 用于面向后台模板使用velocity的前端项目的开发。
+** author : leaves-27
+** createTime : 2016-09-11
+** updateTime : 2017-02-29
+**/
+
 var yeoman = require('yeoman-generator');
-var chalk = require('chalk');//不同的颜色信息
+var chalk = require('chalk');
 var yosay = require('yosay');
 var path = require('path');
 var fs = require('fs');
