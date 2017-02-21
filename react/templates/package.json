@@ -7,6 +7,10 @@
     "type": "git",
     "url": "<%= repo %>"
   },
+  "scripts": {
+    "start": "node ./build/eat-record/server.js",
+    "build": "webpack --config webpack.server.babel.js && webpack --config webpack.client.babel.js"
+  },
   "license": "ISC",
   "devDependencies": {
     "del": "^2.2.2",
