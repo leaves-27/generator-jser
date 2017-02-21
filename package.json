@@ -1,7 +1,7 @@
 {
   "name": "generator-customer",
   "version": "0.0.5",
-  "description": "my gennerator",
+  "description": "用来输出常用开发目录结构的脚手架生成器",
   "keywords": [
     "yeoman-generator"
   ],
