@@ -11,7 +11,7 @@
     </div>
     <div class="navbar-collapse collapse" role="navigation">
       <ul class="nav navbar-nav">
-        <li class="active">
+        <li class="#if($currentPage=='daohang1') active #end">
           <a href="#">导航1</a>
         </li>
       </ul>
