@@ -20,5 +20,8 @@
   },
   "homepage": "https://github.com/leaves-27",
   "author": "leaves",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "dir-to-files": "^1.0.2"
+  }
 }
